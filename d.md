@@ -37,21 +37,21 @@
 - User profiles with performance history
 - Community forums for strategy discussion
 
-## Technical Considerations
+### Technical Considerations
 
 #### Development Path
 
-Build a functional prototype with core features
-Implement the FPL import API
-Create the smart contracts for prediction markets
-Develop the scoring and reward distribution system
-Add social features and user experience enhancements
+- Build a functional prototype with core features
+- Implement the FPL import API
+- Create the smart contracts for prediction markets
+- Develop the scoring and reward distribution system
+- Add social features and user experience enhancements
 
-Potential Challenges
+#### Potential Challenges
 
-Ensuring accurate and timely data feeds for scoring
-Managing liquidity in prediction pools
-Regulatory compliance depending on your target markets
+- Ensuring accurate and timely data feeds for scoring
+- Managing liquidity in prediction pools
+- Regulatory compliance depending on your target markets
 
 
 ## Liquidity Management - Userfunded liquidity models
@@ -139,6 +139,159 @@ This model is particularly effective because it:
 - Creates multiple winning tiers to keep more users engaged
 - Adapts naturally to different pool sizes
 - Maintains excitement throughout the competition period
+
+
+## HOW THIS WORKS
+
+
+#### Prediction Pool Mechanics in Practice
+Let me walk you through how the prediction pools would operate in real-world scenarios:
+
+### Weekly Pool Lifecycle
+
+#### 1. Pool Creation (Pre-Gameweek)
+
+- Administrator or smart contract creates a new pool for the upcoming gameweek
+- Entry requirements are set: stake amount, minimum/maximum participants
+- Reward tiers are defined (e.g., top 1%, 5%, 10%, 25%, 50%)
+- Timeline is established with clear deadlines aligned with FPL deadlines
+
+2. User Participation (Pre-Deadline)
+
+- Users connect their Solana wallets and verify their FPL team ID
+- They join the pool by staking the required amount of tokens
+- Their current FPL team lineup is registered and locked into the smart contract
+- Users receive a token receipt representing their pool entry
+
+3. Pool Lockdown (At Deadline)
+
+- Pool automatically locks when the FPL deadline hits (typically 90 minutes before the first match)
+- No further entries or team changes are permitted
+- Smart contract displays total pool size and potential rewards
+
+4. Live Scoring (During Matches)
+
+- Oracle pulls live FPL data during matches
+- Participants can watch their position change in real-time
+- Leaderboard updates show current standings and projected rewards
+- No withdrawals are permitted during this phase
+
+5. Settlement (Post-Gameweek)
+
+- Once all matches are complete and FPL points finalized, the oracle triggers settlement
+- Smart contract calculates final rankings and percentiles
+- Rewards are automatically distributed to winners' wallets based on tiered structure
+- Results are permanently recorded on-chain
+
+### Pool Variations
+
+#### Standard Pools
+
+Open to all users
+Fixed entry fee (e.g., 0.1 SOL or 10 USDC)
+Predetermined reward structure
+
+#### Premium Pools
+
+Higher stakes (e.g., 1 SOL or 100 USDC)
+Steeper reward curve (higher percentage to top performers)
+Optional features like insurance against injured players
+
+#### Private Pools
+
+Created by users for friends/communities
+Customizable entry fees and reward structures
+Invitation-only participation
+
+#### Tournament Pools
+
+Multi-week competition with progressive elimination
+Portion of weekly stakes roll over to final prize pool
+Bonus points for consistency across gameweeks0
+
+
+#### Real-World Example
+Let's walk through a specific example of how a standard pool would operate:
+
+#### Pool Creation:
+
+Gameweek 12 pool is created on Monday
+Entry fee: 10 USDC
+Maximum participants: 1,000
+Reward structure:
+
+Top 1% (10 users): 25% of pool (25 USDC each)
+Top 5% (50 users): 25% of pool (5 USDC each)
+Top 10% (100 users): 20% of pool (2 USDC each)
+Top 25% (250 users): 20% of pool (0.8 USDC each)
+Platform fee: 10% of pool
+
+
+
+
+## Participation:
+
+By Friday deadline, 800 users have joined
+Total pool: 8,000 USDC
+Platform fee: 800 USDC
+Distributable prize pool: 7,200 USDC
+
+
+#### Gameplay:
+
+Premier League matches occur Saturday through Monday
+Real-time oracle updates scores as matches progress
+Users can track their position on mobile app/website
+
+
+#### Settlement:
+
+Final standings calculated Tuesday morning
+Top 8 users (1%): 1,800 USDC total (225 USDC each)
+Next 40 users (5%): 1,800 USDC total (45 USDC each)
+Next 80 users (10%): 1,440 USDC total (18 USDC each)
+Next 200 users (25%): 1,440 USDC total (7.2 USDC each)
+Bottom 472 users: No rewards
+
+
+#### Post-Settlement:
+
+Winners receive automatic payments to their wallets
+Performance stats added to user profiles
+Invitations sent for next gameweek's pools
+
+
+
+#### Technical Execution
+Behind the scenes, each step is executed through specific smart contract interactions:
+
+#### Pool Creation Transaction:
+
+Creates pool account with parameters
+Initializes token escrow account
+Sets oracle connection for data feeds
+
+
+#### User Join Transaction:
+
+Verifies user's FPL team ownership
+Transfers stake to escrow
+Creates participant entry in pool
+
+
+#### Oracle Update Transactions:
+
+Secured API calls retrieve official FPL data
+Multiple validators confirm data accuracy
+Authenticated oracle updates on-chain scores
+
+
+#### Settlement Transaction:
+
+Calculates final rankings with percentile algorithm
+Applies reward distribution formula
+Generates transfer instructions for payouts
+
 
 
 
@@ -377,187 +530,36 @@ pub fn process_join_pool(
 
 #### Program Architecture Benefits
 
-Composability: Works with SPL tokens and other Solana programs
-Scalability: Efficient data structures minimize transaction costs
-Transparency: All calculations and results are on-chain and verifiable
-Flexibility: Reward tiers can be adjusted for different pools
-Security: Oracle data updates are verified and access-controlled
+- Composability: Works with SPL tokens and other Solana programs
+- Scalability: Efficient data structures minimize transaction costs
+- Transparency: All calculations and results are on-chain and verifiable
+- Flexibility: Reward tiers can be adjusted for different pools
+- Security: Oracle data updates are verified and access-controlled
 
 #### Additional Technical Considerations
 
 #### Oracle Reliability
 
-Implement multiple data sources for FPL scores to ensure accuracy
-Use a time-weighted average to smooth any inconsistencies
-Create contingency mechanisms for oracle failures
+- Implement multiple data sources for FPL scores to ensure accuracy
+- Use a time-weighted average to smooth any inconsistencies
+- Create contingency mechanisms for oracle failures
 
 
 #### Gas Optimization
 
-Batch score updates to minimize transaction costs
-Use off-chain computation where possible, with on-chain verification
+- Batch score updates to minimize transaction costs
+- Use off-chain computation where possible, with on-chain verification
 
 
 #### Upgradability
 
-Consider implementing an upgradeable contract pattern
-Store configuration in a separate account for easier updates
+- Consider implementing an upgradeable contract pattern
+- Store configuration in a separate account for easier updates
 
 
 #### Cross-Program Invocation
 
-Interface with other DeFi protocols for additional features
-Enable token swaps for users who want to use different currencies
+- Interface with other DeFi protocols for additional features
+- Enable token swaps for users who want to use different currencies
 
-
-## HOW THIS WORKS
-
-
-#### Prediction Pool Mechanics in Practice
-Let me walk you through how the prediction pools would operate in real-world scenarios:
-
-### Weekly Pool Lifecycle
-
-#### 1. Pool Creation (Pre-Gameweek)
-
-- Administrator or smart contract creates a new pool for the upcoming gameweek
-- Entry requirements are set: stake amount, minimum/maximum participants
-- Reward tiers are defined (e.g., top 1%, 5%, 10%, 25%, 50%)
-- Timeline is established with clear deadlines aligned with FPL deadlines
-
-2. User Participation (Pre-Deadline)
-
-- Users connect their Solana wallets and verify their FPL team ID
-- They join the pool by staking the required amount of tokens
-- Their current FPL team lineup is registered and locked into the smart contract
-- Users receive a token receipt representing their pool entry
-
-3. Pool Lockdown (At Deadline)
-
-- Pool automatically locks when the FPL deadline hits (typically 90 minutes before the first match)
-- No further entries or team changes are permitted
-- Smart contract displays total pool size and potential rewards
-
-4. Live Scoring (During Matches)
-
-- Oracle pulls live FPL data during matches
-- Participants can watch their position change in real-time
-- Leaderboard updates show current standings and projected rewards
-- No withdrawals are permitted during this phase
-
-5. Settlement (Post-Gameweek)
-
-- Once all matches are complete and FPL points finalized, the oracle triggers settlement
-- Smart contract calculates final rankings and percentiles
-- Rewards are automatically distributed to winners' wallets based on tiered structure
-- Results are permanently recorded on-chain
-
-### Pool Variations
-
-#### Standard Pools
-
-Open to all users
-Fixed entry fee (e.g., 0.1 SOL or 10 USDC)
-Predetermined reward structure
-
-#### Premium Pools
-
-Higher stakes (e.g., 1 SOL or 100 USDC)
-Steeper reward curve (higher percentage to top performers)
-Optional features like insurance against injured players
-
-#### Private Pools
-
-Created by users for friends/communities
-Customizable entry fees and reward structures
-Invitation-only participation
-
-#### Tournament Pools
-
-Multi-week competition with progressive elimination
-Portion of weekly stakes roll over to final prize pool
-Bonus points for consistency across gameweeks0
-
-
-#### Real-World Example
-Let's walk through a specific example of how a standard pool would operate:
-
-#### Pool Creation:
-
-Gameweek 12 pool is created on Monday
-Entry fee: 10 USDC
-Maximum participants: 1,000
-Reward structure:
-
-Top 1% (10 users): 25% of pool (25 USDC each)
-Top 5% (50 users): 25% of pool (5 USDC each)
-Top 10% (100 users): 20% of pool (2 USDC each)
-Top 25% (250 users): 20% of pool (0.8 USDC each)
-Platform fee: 10% of pool
-
-
-
-
-## Participation:
-
-By Friday deadline, 800 users have joined
-Total pool: 8,000 USDC
-Platform fee: 800 USDC
-Distributable prize pool: 7,200 USDC
-
-
-#### Gameplay:
-
-Premier League matches occur Saturday through Monday
-Real-time oracle updates scores as matches progress
-Users can track their position on mobile app/website
-
-
-#### Settlement:
-
-Final standings calculated Tuesday morning
-Top 8 users (1%): 1,800 USDC total (225 USDC each)
-Next 40 users (5%): 1,800 USDC total (45 USDC each)
-Next 80 users (10%): 1,440 USDC total (18 USDC each)
-Next 200 users (25%): 1,440 USDC total (7.2 USDC each)
-Bottom 472 users: No rewards
-
-
-#### Post-Settlement:
-
-Winners receive automatic payments to their wallets
-Performance stats added to user profiles
-Invitations sent for next gameweek's pools
-
-
-
-#### Technical Execution
-Behind the scenes, each step is executed through specific smart contract interactions:
-
-#### Pool Creation Transaction:
-
-Creates pool account with parameters
-Initializes token escrow account
-Sets oracle connection for data feeds
-
-
-#### User Join Transaction:
-
-Verifies user's FPL team ownership
-Transfers stake to escrow
-Creates participant entry in pool
-
-
-#### Oracle Update Transactions:
-
-Secured API calls retrieve official FPL data
-Multiple validators confirm data accuracy
-Authenticated oracle updates on-chain scores
-
-
-#### Settlement Transaction:
-
-Calculates final rankings with percentile algorithm
-Applies reward distribution formula
-Generates transfer instructions for payouts
 
