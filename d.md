@@ -51,14 +51,10 @@
 
 - Ensuring accurate and timely data feeds for scoring
 - Managing liquidity in prediction pools
-- Regulatory compliance depending on your target markets
+- Regulatory compliance, depending on your target markets
 
 
-## Liquidity Management - Userfunded liquidity models
-
-You're right to focus on a user-funded liquidity model - this is actually one of the elegant aspects of prediction markets and can work quite effectively for your platform.
-
-Here's how you could structure the liquidity management:
+## Liquidity Management
 
 ## User-Funded Liquidity Model
 
