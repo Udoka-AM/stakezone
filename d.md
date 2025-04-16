@@ -216,9 +216,9 @@ Let's walk through a specific example of how a standard pool would operate:
 #### Pool Creation:
 
 Gameweek 12 pool is created on Monday
-Entry fee: 10 USDC
-Maximum participants: 1,000
-Reward structure:
+- Entry fee: 10 USDC
+- Maximum participants: 1,000
+- Reward structure:
 
 Top 1% (10 users): 25% of pool (25 USDC each)
 Top 5% (50 users): 25% of pool (5 USDC each)
@@ -232,33 +232,33 @@ Platform fee: 10% of pool
 ## Participation:
 
 By Friday deadline, 800 users have joined
-Total pool: 8,000 USDC
-Platform fee: 800 USDC
-Distributable prize pool: 7,200 USDC
+- Total pool: 8,000 USDC
+- Platform fee: 800 USDC
+- Distributable prize pool: 7,200 USDC
 
 
 #### Gameplay:
 
-Premier League matches occur Saturday through Monday
-Real-time oracle updates scores as matches progress
-Users can track their position on mobile app/website
+- Premier League matches occur Saturday through Monday
+- Real-time oracle updates scores as matches progress
+- Users can track their position on mobile app/website
 
 
 #### Settlement:
 
 Final standings calculated Tuesday morning
-Top 8 users (1%): 1,800 USDC total (225 USDC each)
-Next 40 users (5%): 1,800 USDC total (45 USDC each)
-Next 80 users (10%): 1,440 USDC total (18 USDC each)
-Next 200 users (25%): 1,440 USDC total (7.2 USDC each)
-Bottom 472 users: No rewards
+- Top 8 users (1%): 1,800 USDC total (225 USDC each)
+- Next 40 users (5%): 1,800 USDC total (45 USDC each)
+- Next 80 users (10%): 1,440 USDC total (18 USDC each)
+- Next 200 users (25%): 1,440 USDC total (7.2 USDC each)
+- Bottom 472 users: No rewards
 
 
 #### Post-Settlement:
 
-Winners receive automatic payments to their wallets
-Performance stats added to user profiles
-Invitations sent for next gameweek's pools
+- Winners receive automatic payments to their wallets
+- Performance stats added to user profiles
+- Invitations sent for next gameweek's pools
 
 
 
@@ -267,30 +267,30 @@ Behind the scenes, each step is executed through specific smart contract interac
 
 #### Pool Creation Transaction:
 
-Creates pool account with parameters
-Initializes token escrow account
-Sets oracle connection for data feeds
+- Creates pool account with parameters
+- Initializes token escrow account
+- Sets oracle connection for data feeds
 
 
 #### User Join Transaction:
 
-Verifies user's FPL team ownership
-Transfers stake to escrow
-Creates participant entry in pool
+- Verifies user's FPL team ownership
+- Transfers stake to escrow
+- Creates participant entry in pool
 
 
 #### Oracle Update Transactions:
 
-Secured API calls retrieve official FPL data
-Multiple validators confirm data accuracy
-Authenticated oracle updates on-chain scores
+- Secured API calls retrieve official FPL data
+- Multiple validators confirm data accuracy
+- Authenticated oracle updates on-chain scores
 
 
 #### Settlement Transaction:
 
-Calculates final rankings with percentile algorithm
-Applies reward distribution formula
-Generates transfer instructions for payouts
+- Calculates final rankings with percentile algorithm
+- Applies reward distribution formula
+- Generates transfer instructions for payouts
 
 
 
