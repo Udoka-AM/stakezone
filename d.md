@@ -91,7 +91,7 @@ Here's how you could structure the liquidity management:
 This approach is particularly well-suited for Solana, as the low transaction fees allow for efficient fund management without eating into users' stakes or winnings. The smart contracts can be programmed to automatically distribute the appropriate rewards to winners while reserving the platform fee, making the entire process trustless and efficient.
 
 
-### Winners/losers selection
+## Winners/losers selection
 
 For determining winners and losers based on real-time FPL team performance, I'd recommend implementing a percentile-based scoring system with tiered rewards. 
 Here's how you could structure it:
@@ -410,9 +410,6 @@ Interface with other DeFi protocols for additional features
 Enable token swaps for users who want to use different currencies
 
 
-
-
-
 ## HOW THIS WORKS
 
 
@@ -430,32 +427,33 @@ Let me walk you through how the prediction pools would operate in real-world sce
 
 2. User Participation (Pre-Deadline)
 
-Users connect their Solana wallets and verify their FPL team ID
-They join the pool by staking the required amount of tokens
-Their current FPL team lineup is registered and locked into the smart contract
-Users receive a token receipt representing their pool entry
+- Users connect their Solana wallets and verify their FPL team ID
+- They join the pool by staking the required amount of tokens
+- Their current FPL team lineup is registered and locked into the smart contract
+- Users receive a token receipt representing their pool entry
 
 3. Pool Lockdown (At Deadline)
 
-Pool automatically locks when the FPL deadline hits (typically 90 minutes before the first match)
-No further entries or team changes are permitted
-Smart contract displays total pool size and potential rewards
+- Pool automatically locks when the FPL deadline hits (typically 90 minutes before the first match)
+- No further entries or team changes are permitted
+- Smart contract displays total pool size and potential rewards
 
 4. Live Scoring (During Matches)
 
-Oracle pulls live FPL data during matches
-Participants can watch their position change in real-time
-Leaderboard updates show current standings and projected rewards
-No withdrawals are permitted during this phase
+- Oracle pulls live FPL data during matches
+- Participants can watch their position change in real-time
+- Leaderboard updates show current standings and projected rewards
+- No withdrawals are permitted during this phase
 
 5. Settlement (Post-Gameweek)
 
-Once all matches are complete and FPL points finalized, the oracle triggers settlement
-Smart contract calculates final rankings and percentiles
-Rewards are automatically distributed to winners' wallets based on tiered structure
-Results are permanently recorded on-chain
+- Once all matches are complete and FPL points finalized, the oracle triggers settlement
+- Smart contract calculates final rankings and percentiles
+- Rewards are automatically distributed to winners' wallets based on tiered structure
+- Results are permanently recorded on-chain
 
-#### Pool Variations
+### Pool Variations
+
 #### Standard Pools
 
 Open to all users
