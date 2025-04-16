@@ -1,37 +1,37 @@
 # Core Platform Components
 
-### Team Import System
+#### Team Import System
 
-- API integration with the official Fantasy Premier League to allow users to securely import their existing teams
+- API integration with the official Fantasy Premier League to allow users to import their existing teams securely
 - Authentication mechanism to verify ownership of imported teams
-- Real-time synchronization to keep team data current with FPL
+- Real-time synchronisation to keep team data current with FPL
 
-### Prediction Market Infrastructure
+#### Prediction Market Infrastructure
 
 - Smart contracts to create and manage prediction pools
 - Oracle integration for real-world data feeds of player/team performance
 - Automated scoring system that calculates results based on actual Premier League matches
 
-### Financial System
+#### Financial System
 
 - Solana wallet integration for deposits and withdrawals
 - SPL token support for platform-specific tokens and stablecoins
 - Fee structure that's competitive but sustainable
 
 ## Key Features
-### Weekly Prediction Markets
+#### Weekly Prediction Markets
 
 - Users stake crypto on their team's weekly performance
 - Multiple market types: head-to-head, tournament style, season-long leagues
 - Time-locked predictions to prevent last-minute changes
 
-### Reward System
+#### Reward System
 
 - Tiered payout structure based on performance percentiles
 - Bonus multipliers for consistent performance
 - Special rewards for exceptional predictions or season achievements
 
-### Social Elements
+#### Social Elements
 
 - Leaderboards displaying top performers
 - User profiles with performance history
@@ -39,7 +39,7 @@
 
 ## Technical Considerations
 
-### Development Path
+#### Development Path
 
 Build a functional prototype with core features
 Implement the FPL import API
@@ -54,8 +54,6 @@ Managing liquidity in prediction pools
 Regulatory compliance depending on your target markets
 
 
-
-
 ## Liquidity Management - Userfunded liquidity models
 
 You're right to focus on a user-funded liquidity model - this is actually one of the elegant aspects of prediction markets and can work quite effectively for your platform.
@@ -64,27 +62,27 @@ Here's how you could structure the liquidity management:
 
 ## User-Funded Liquidity Model
 
-### Pool-Based System
+#### Pool-Based System
 
 - Each prediction market becomes its own liquidity pool
 - Entry fees from all participants create the total prize pool
 - Smart contracts automatically distribute rewards based on results
 - No need for external market makers or liquidity providers
 
-### Balance Management
+#### Balance Management
 
 - Smart contracts lock funds when predictions are placed
 - Funds remain in escrow until scoring and settlement
 - Automated distribution of rewards immediately after official results
 
-### Advantages
+#### Advantages
 
 - Self-sustaining ecosystem where users provide all necessary liquidity
 - No capital requirements for you beyond operating the platform
 - Transparent fund management visible on-chain
 - Minimizes counterparty risk since funds are held in smart contracts
 
-### Platform Revenue Model
+#### Platform Revenue Model
 
 - Small percentage fee from each pool (e.g., 3-5%)
 - Optional premium features or tournaments
@@ -93,26 +91,26 @@ Here's how you could structure the liquidity management:
 This approach is particularly well-suited for Solana, as the low transaction fees allow for efficient fund management without eating into users' stakes or winnings. The smart contracts can be programmed to automatically distribute the appropriate rewards to winners while reserving the platform fee, making the entire process trustless and efficient.
 
 
-## Winners/loosers selection
+### Winners/losers selection
 
 For determining winners and losers based on real-time FPL team performance, I'd recommend implementing a percentile-based scoring system with tiered rewards. 
 Here's how you could structure it:
 
-## Percentile-Based Scoring System
-### Data Collection
+### Percentile-Based Scoring System
+#### Data Collection
 
 - Pull official FPL scoring data through their API
 - Track each player's performance metrics in real-time during matches
 - Map imported FPL teams to their corresponding real-world performance
 
-### Scoring Algorithm
+#### Scoring Algorithm
 
 - Calculate the total points for each user's FPL team based on actual player performances
 - Rank all participants in the pool from highest to lowest score
 - Convert rankings to percentiles (top 1%, top 10%, etc.)
 - Assign rewards based on percentile thresholds
 
-### Reward Distribution Structure
+#### Reward Distribution Structure
 
 - Top 1%: 20-25% of the pool
 - Top 5%: 15-20% of the pool
@@ -122,14 +120,14 @@ Here's how you could structure it:
 
 This creates a natural curve where exceptional performance is well-rewarded while still providing incentives across multiple tiers.
 
-### Implementation Benefits
+#### Implementation Benefits
 
 1. Scales automatically with any pool size
 2. Creates meaningful distinctions between performance levels
 3. Always produces winners regardless of absolute scores
 4. Maintains engagement from a broader user base
 
-### Smart Contract Logic
+#### Smart Contract Logic
 
 - Pre-define the percentile thresholds and corresponding reward percentages
 - Automatically calculate rankings after all matches complete
@@ -145,10 +143,11 @@ This model is particularly effective because it:
 
 
 ## Smart Contract Architecture
-### 1. Main Program Components
+#### 1. Main Program Components
 
 ```
 rust// Key program structures
+
 pub struct PredictionPool {
     pub pool_id: Pubkey,
     pub total_stake: u64,
@@ -181,10 +180,11 @@ pub enum PoolStatus {
 }
 ```
 
-### 2. Key Instructions
+#### 2. Key Instructions
 
 ```
 rust// Main program instructions
+
 pub enum PredictionInstruction {
     // Create a new prediction pool
     CreatePool {
@@ -223,11 +223,13 @@ pub enum PredictionInstruction {
 }
 ```
 
-### 3. Oracle Integration
+#### 3. Oracle Integration
 You'll need a reliable oracle system to fetch and verify FPL data:
-rust// Oracle account structure
+
 
 ```
+rust// Oracle account structure
+
 pub struct FplOracle {
     pub authority: Pubkey,
     pub last_update: i64,
@@ -246,11 +248,13 @@ pub fn process_oracle_update(
 }
 ```
 
-### 4. Scoring Algorithm Implementation
+#### 4. Scoring Algorithm Implementation
 Here's the core algorithm for calculating percentiles and rewards:
-rust
+
 
 ```
+rust
+
 pub fn calculate_results(
     pool: &mut PredictionPool,
     participants: &mut [Participant],
@@ -304,10 +308,11 @@ pub fn calculate_results(
 }
 ```
 
-### 5. Token Handling
-rust// Stake tokens when joining a pool
+#### 5. Token Handling
 
 ```
+rust// Stake tokens when joining a pool
+
 pub fn process_join_pool(
     program_id: &Pubkey,
     accounts: &[AccountInfo],
@@ -370,7 +375,7 @@ pub fn process_join_pool(
 }
 ```
 
-### Program Architecture Benefits
+#### Program Architecture Benefits
 
 Composability: Works with SPL tokens and other Solana programs
 Scalability: Efficient data structures minimize transaction costs
@@ -378,28 +383,28 @@ Transparency: All calculations and results are on-chain and verifiable
 Flexibility: Reward tiers can be adjusted for different pools
 Security: Oracle data updates are verified and access-controlled
 
-### Additional Technical Considerations
+#### Additional Technical Considerations
 
-### Oracle Reliability
+#### Oracle Reliability
 
 Implement multiple data sources for FPL scores to ensure accuracy
 Use a time-weighted average to smooth any inconsistencies
 Create contingency mechanisms for oracle failures
 
 
-### Gas Optimization
+#### Gas Optimization
 
 Batch score updates to minimize transaction costs
 Use off-chain computation where possible, with on-chain verification
 
 
-### Upgradability
+#### Upgradability
 
 Consider implementing an upgradeable contract pattern
 Store configuration in a separate account for easier updates
 
 
-### Cross-Program Invocation
+#### Cross-Program Invocation
 
 Interface with other DeFi protocols for additional features
 Enable token swaps for users who want to use different currencies
@@ -408,19 +413,20 @@ Enable token swaps for users who want to use different currencies
 
 
 
-## hOW THIS WORKS
+## HOW THIS WORKS
 
 
-### Prediction Pool Mechanics in Practice
+#### Prediction Pool Mechanics in Practice
 Let me walk you through how the prediction pools would operate in real-world scenarios:
 
 ### Weekly Pool Lifecycle
-1. Pool Creation (Pre-Gameweek)
 
-Administrator or smart contract creates a new pool for the upcoming gameweek
-Entry requirements are set: stake amount, minimum/maximum participants
-Reward tiers are defined (e.g., top 1%, 5%, 10%, 25%, 50%)
-Timeline is established with clear deadlines aligned with FPL deadlines
+#### 1. Pool Creation (Pre-Gameweek)
+
+- Administrator or smart contract creates a new pool for the upcoming gameweek
+- Entry requirements are set: stake amount, minimum/maximum participants
+- Reward tiers are defined (e.g., top 1%, 5%, 10%, 25%, 50%)
+- Timeline is established with clear deadlines aligned with FPL deadlines
 
 2. User Participation (Pre-Deadline)
 
@@ -449,36 +455,36 @@ Smart contract calculates final rankings and percentiles
 Rewards are automatically distributed to winners' wallets based on tiered structure
 Results are permanently recorded on-chain
 
-### Pool Variations
-### Standard Pools
+#### Pool Variations
+#### Standard Pools
 
 Open to all users
 Fixed entry fee (e.g., 0.1 SOL or 10 USDC)
 Predetermined reward structure
 
-### Premium Pools
+#### Premium Pools
 
 Higher stakes (e.g., 1 SOL or 100 USDC)
 Steeper reward curve (higher percentage to top performers)
 Optional features like insurance against injured players
 
-### Private Pools
+#### Private Pools
 
 Created by users for friends/communities
 Customizable entry fees and reward structures
 Invitation-only participation
 
-### Tournament Pools
+#### Tournament Pools
 
 Multi-week competition with progressive elimination
 Portion of weekly stakes roll over to final prize pool
 Bonus points for consistency across gameweeks0
 
 
-### Real-World Example
+#### Real-World Example
 Let's walk through a specific example of how a standard pool would operate:
 
-### Pool Creation:
+#### Pool Creation:
 
 Gameweek 12 pool is created on Monday
 Entry fee: 10 USDC
@@ -502,14 +508,14 @@ Platform fee: 800 USDC
 Distributable prize pool: 7,200 USDC
 
 
-### Gameplay:
+#### Gameplay:
 
 Premier League matches occur Saturday through Monday
 Real-time oracle updates scores as matches progress
 Users can track their position on mobile app/website
 
 
-### Settlement:
+#### Settlement:
 
 Final standings calculated Tuesday morning
 Top 8 users (1%): 1,800 USDC total (225 USDC each)
@@ -519,7 +525,7 @@ Next 200 users (25%): 1,440 USDC total (7.2 USDC each)
 Bottom 472 users: No rewards
 
 
-### Post-Settlement:
+#### Post-Settlement:
 
 Winners receive automatic payments to their wallets
 Performance stats added to user profiles
@@ -527,31 +533,31 @@ Invitations sent for next gameweek's pools
 
 
 
-### Technical Execution
+#### Technical Execution
 Behind the scenes, each step is executed through specific smart contract interactions:
 
-### Pool Creation Transaction:
+#### Pool Creation Transaction:
 
 Creates pool account with parameters
 Initializes token escrow account
 Sets oracle connection for data feeds
 
 
-### User Join Transaction:
+#### User Join Transaction:
 
 Verifies user's FPL team ownership
 Transfers stake to escrow
 Creates participant entry in pool
 
 
-### Oracle Update Transactions:
+#### Oracle Update Transactions:
 
 Secured API calls retrieve official FPL data
 Multiple validators confirm data accuracy
 Authenticated oracle updates on-chain scores
 
 
-### Settlement Transaction:
+#### Settlement Transaction:
 
 Calculates final rankings with percentile algorithm
 Applies reward distribution formula
