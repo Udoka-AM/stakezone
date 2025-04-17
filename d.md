@@ -112,7 +112,7 @@ Here's how you could structure it:
 - Top 5%: 15-20% of the pool
 - Top 10%: 10-15% of the pool
 - Top 25%: 5-10% of the pool
-- Top 50%: Return of initial stake
+
 
 This creates a natural curve where exceptional performance is well-rewarded while still providing incentives across multiple tiers.
 
@@ -174,9 +174,9 @@ Let me walk you through how the prediction pools would operate in real-world sce
 
 5. Settlement (Post-Gameweek)
 
-- Once all matches are complete and FPL points finalized, the oracle triggers settlement
+- Once all matches are complete and FPL points finalised, the oracle triggers settlement
 - Smart contract calculates final rankings and percentiles
-- Rewards are automatically distributed to winners' wallets based on tiered structure
+- Rewards are automatically distributed to winners' wallets based on a tiered structure
 - Results are permanently recorded on-chain
 
 ### Pool Variations
@@ -190,7 +190,7 @@ Predetermined reward structure
 #### Premium Pools
 
 Higher stakes (e.g., 1 SOL or 100 USDC)
-Steeper reward curve (higher percentage to top performers)
+Steeper reward curve (higher percentage for top performers)
 Optional features like insurance against injured players
 
 #### Private Pools
@@ -202,8 +202,8 @@ Invitation-only participation
 #### Tournament Pools
 
 Multi-week competition with progressive elimination
-Portion of weekly stakes roll over to final prize pool
-Bonus points for consistency across gameweeks0
+A portion of the weekly stakes rolls over to the  final prize pool
+Bonus points for consistency across gameweeks
 
 
 #### Real-World Example
@@ -220,14 +220,14 @@ Top 1% (10 users): 25% of pool (25 USDC each)
 Top 5% (50 users): 25% of pool (5 USDC each)
 Top 10% (100 users): 20% of pool (2 USDC each)
 Top 25% (250 users): 20% of pool (0.8 USDC each)
-Platform fee: 10% of pool
+Platform fee: 10% of the pool
 
 
 
 
 ## Participation:
 
-By Friday deadline, 800 users have joined
+By the Friday deadline, 800 users have joined
 - Total pool: 8,000 USDC
 - Platform fee: 800 USDC
 - Distributable prize pool: 7,200 USDC
@@ -237,17 +237,19 @@ By Friday deadline, 800 users have joined
 
 - Premier League matches occur Saturday through Monday
 - Real-time oracle updates scores as matches progress
-- Users can track their position on mobile app/website
+- Users can track their position on the mobile app/website
 
 
 #### Settlement:
 
 Final standings calculated Tuesday morning
-- Top 8 users (1%): 1,800 USDC total (225 USDC each)
-- Next 40 users (5%): 1,800 USDC total (45 USDC each)
-- Next 80 users (10%): 1,440 USDC total (18 USDC each)
-- Next 200 users (25%): 1,440 USDC total (7.2 USDC each)
-- Bottom 472 users: No rewards
+
+Top 1% (8 users): 25% of 7,200 USDC = 1,800 USDC (225 USDC each)
+Next 4% (32 users): 25% of 7,200 USDC = 1,800 USDC (56.25 USDC each)
+Next 5% (40 users): 20% of 7,200 USDC = 1,440 USDC (36 USDC each)
+Next 15% (120 users): 20% of 7,200 USDC = 1,440 USDC (12 USDC each)
+Next 25% (200 users): 10% of 7,200 USDC = 720 USDC (3.6 USDC each)
+Bottom 50% (400 users): No rewards
 
 
 #### Post-Settlement:
