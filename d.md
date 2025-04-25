@@ -32,10 +32,7 @@
 - Special rewards for exceptional predictions or season achievements
 
 #### Social Elements
-
 - Leaderboards displaying top performers
-- User profiles with performance history
-- Community forums for strategy discussion
 
 ### Technical Considerations
 
