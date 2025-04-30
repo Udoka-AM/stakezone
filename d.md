@@ -1,4 +1,4 @@
-# Core Platform Components (first round developments
+# Core Platform Components (first round developments)
 
 #### Team Import System
 
