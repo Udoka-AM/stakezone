@@ -3,7 +3,7 @@
 #### Team Import System
 
 - API integration with the official Fantasy Premier League to allow users to import their existing teams securely
-- Authentication mechanism to verify ownership of imported teams
+- An authentication mechanism to verify ownership of imported teams
 - Real-time synchronisation to keep team data current with FPL
 
 #### Prediction Market Infrastructure
@@ -70,10 +70,10 @@
 
 #### Advantages
 
-- Self-sustaining ecosystem where users provide all necessary liquidity
+- A self-sustaining ecosystem where users provide all necessary liquidity
 - No capital requirements for you beyond operating the platform
-- Transparent fund management visible on-chain
-- Minimizes counterparty risk since funds are held in smart contracts
+- Transparent fund management is visible on-chain
+- Minimises counterparty risk since funds are held in smart contracts
 
 #### Platform Revenue Model
 
@@ -81,12 +81,12 @@
 - Optional premium features or tournaments
 - No need to provide house funds for payouts
 
-This approach is particularly well-suited for Solana, as the low transaction fees allow for efficient fund management without eating into users' stakes or winnings. The smart contracts can be programmed to automatically distribute the appropriate rewards to winners while reserving the platform fee, making the entire process trustless and efficient.
+This approach is particularly well-suited for Solana, as the low transaction fees allow for efficient fund management without eating into users' stakes or winnings. The smart contracts can be programmed to automatically distribute rewards to winners while reserving the platform fee, making the entire process trustless and efficient.
 
 
 ## Winners/losers selection
 
-For determining winners and losers based on real-time FPL team performance, I'd recommend implementing a percentile-based scoring system with tiered rewards. 
+To determine winners and losers based on real-time FPL team performance, I recommend implementing a percentile-based scoring system with tiered rewards. 
 Here's how you could structure it:
 
 ### Percentile-Based Scoring System
