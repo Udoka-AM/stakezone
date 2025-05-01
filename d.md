@@ -1,5 +1,4 @@
-# Core Platform Components (first round developments)
-
+# Core Platform Components 
 #### Team Import System
 
 - API integration with the official Fantasy Premier League to allow users to import their existing teams securely
