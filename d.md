@@ -287,8 +287,6 @@ Behind the scenes, each step is executed through specific smart contract interac
 - Generates transfer instructions for payouts
 
 
-
-
 ## Smart Contract Architecture
 #### 1. Main Program Components
 
