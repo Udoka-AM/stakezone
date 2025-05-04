@@ -137,7 +137,7 @@ This model is particularly effective because it:
 
 
 #### Prediction Pool Mechanics in Practice
-Let me walk you through how the prediction pools would operate in real-world scenarios:
+Real-world scenarios:
 
 ### Weekly Pool Lifecycle
 
