@@ -47,7 +47,7 @@
 
 - Ensuring accurate and timely data feeds for scoring
 - Managing liquidity in prediction pools
-- Regulatory compliance, depending on your target markets
+
 
 
 ## Liquidity Management
