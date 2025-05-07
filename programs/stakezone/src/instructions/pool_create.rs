@@ -1,5 +1,5 @@
 use anchor_lang::prelude::*;
-use crate::state::Pool;
+use crate::state::pool::Pool;
 use anchor_spl::token::Mint;
 
 #[derive(Accounts)]

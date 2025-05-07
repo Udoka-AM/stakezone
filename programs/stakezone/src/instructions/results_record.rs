@@ -1,5 +1,6 @@
 use anchor_lang::prelude::*;
-use crate::state::{Pool, Participation};
+use crate::state::pool::Pool;
+use crate::state::participation::Participation;
 use crate::errors::ErrorCode;
 use anchor_spl::token::Mint;
 

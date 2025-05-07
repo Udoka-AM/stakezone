@@ -1,7 +1,7 @@
 use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Transfer, TokenAccount, Mint};
-use crate::state::{Pool, Participation};
-use crate::errors::ErrorCode;
+use crate::state::pool::Pool;
+use crate::state::participation::Participation;
 use std::cmp::Reverse;
 
 #[derive(Accounts)]

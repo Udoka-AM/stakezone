@@ -1,56 +1,37 @@
-use anchor_lang::error_code;
-use constant_product_curve::CurveError;
+use anchor_lang::prelude::*;
 
 #[error_code]
-pub enum AmmError {
-    #[msg("DefaultError")]
-    DefaultError,
-    #[msg("Offer expired.")]
-    OfferExpired,
-    #[msg("This pool is locked.")]
-    PoolLocked,
-    #[msg("Slippage exceeded.")]
-    SlippageExceeded,
-    #[msg("Overflow detected.")]
-    Overflow,
-    #[msg("Underflow detected.")]
-    Underflow,
-    #[msg("Invalid token.")]
-    InvalidToken,
-    #[msg("Actual liquidity is less than minimum.")]
-    LiquidityLessThanMinimum,
-    #[msg("No liquidity in pool.")]
-    NoLiquidityInPool,
-    #[msg("Bump error.")]
-    BumpError,
-    #[msg("Curve error.")]
-    CurveError,
-    #[msg("Fee is greater than 100%. This is not a very good deal.")]
-    InvalidFee,
-    #[msg("Invalid update authority.")]
-    InvalidAuthority,
-    #[msg("No update authority set.")]
-    NoAuthoritySet,
-    #[msg("Invalid amount.")]
-    InvalidAmount,
-    #[msg("Invalid precision.")]
-    InvalidPrecision,
-    #[msg("Insufficient balance.")]
-    InsufficientBalance,
-    #[msg("Zero balance.")]
-    ZeroBalance,
-}
-
-impl From<CurveError> for AmmError {
-    fn from(error: CurveError) -> AmmError {
-        match error {
-            CurveError::InvalidPrecision => AmmError::InvalidPrecision,
-            CurveError::Overflow => AmmError::Overflow,
-            CurveError::Underflow => AmmError::Underflow,
-            CurveError::InvalidFeeAmount => AmmError::InvalidFee,
-            CurveError::InsufficientBalance => AmmError::InsufficientBalance,
-            CurveError::ZeroBalance => AmmError::ZeroBalance,
-            CurveError::SlippageLimitExceeded => AmmError::SlippageExceeded,
-        }
-    }
+pub enum ErrorCode {
+    #[msg("Pool is not open for joining.")]
+    PoolClosed,
+    #[msg("The pool start time has not been reached yet.")]
+    PoolNotStarted,
+    #[msg("The pool end time has passed.")]
+    PoolEnded,
+    #[msg("Insufficient funds to join the pool.")]
+    InsufficientFunds,
+    #[msg("You have already joined this pool.")]
+    AlreadyJoined,
+    #[msg("Invalid reward tier configuration.")]
+    InvalidRewardTier,
+    #[msg("Reward tiers must sum to 100%.")]
+    InvalidRewardTierSum,
+    #[msg("Oracle account provided is not authorized for this pool.")]
+    UnauthorizedOracle,
+    #[msg("The pool has not ended yet.")]
+    PoolNotSettled,
+    #[msg("Scores cannot be recorded before the pool end time.")]
+    ScoreRecordingTooEarly,
+    #[msg("Price feed is unavailable.")]
+    PriceFeedUnavailable,
+    #[msg("Invalid number of winner accounts provided.")]
+    InvalidWinnerAccountCount,
+    #[msg("Winner token account does not match the participant.")]
+    InvalidWinnerTokenAccount,
+    #[msg("The pool has already been settled and rewards distributed.")]
+    PoolAlreadySettled,
+    #[msg("Entry fee must be greater than zero.")]
+    InvalidEntryFee,
+    #[msg("Start time must be before end time.")]
+    InvalidTimeframe,
 }
