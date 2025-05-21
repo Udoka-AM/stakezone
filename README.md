@@ -539,7 +539,7 @@ pub fn process_join_pool(
 - Create contingency mechanisms for oracle failures
 
 
-#### Gas Optimization
+#### Gas Optimisation
 
 - Batch score updates to minimize transaction costs
 - Use off-chain computation where possible, with on-chain verification
@@ -555,35 +555,3 @@ pub fn process_join_pool(
 
 - Interface with other DeFi protocols for additional features
 - Enable token swaps for users who want to use different currencies
-
-
-programs/
-└── fantasy-sports/   # Anchor program directory
-    ├── src/
-    │   ├── lib.rs        # Main program logic
-    │   ├── instructions/ # Separate modules for each instruction
-    │   │   ├── create_pool.rs
-    │   │   ├── join_pool.rs
-    │   │   ├── record_results.rs # Oracle interaction
-    │   │   ├── distribute_rewards.rs
-    │   │   └── mod.rs
-    │   ├── state/        # Define the data structures for accounts
-    │   │   ├── pool.rs
-    │   │   ├── participation.rs
-    │   │   └── mod.rs
-    │   ├── errors.rs       # Custom program errors
-    │   ├── contexts/     # Context structs for instructions (optional, but good for organization)
-    │   │   ├── create_pool.rs
-    │   │   └── mod.rs
-    │   └── utils/        # On-chain utility functions
-    │       └── mod.rs
-    ├── migrations/     # Deploy script
-    │   └── deploy.ts
-    ├── tests/          # Integration tests
-    │   ├── basic.ts
-    │   └── ...
-    ├── Anchor.toml       # Anchor configuration file
-    ├── Cargo.toml        # Rust package manifest
-    └── IDL/            # Generated IDL file (after building)
-        └── fantasy_sports.json
-
