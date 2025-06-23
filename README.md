@@ -57,7 +57,7 @@
 
 #### Pool-Based System
 
-- Each prediction market becomes its own liquidity pool
+- Each prediction market becomes its liquidity pool
 - Entry fees from all participants create the total prize pool
 - Smart contracts automatically distribute rewards based on results
 - No need for external market makers or liquidity providers
