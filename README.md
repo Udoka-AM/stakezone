@@ -525,7 +525,7 @@ pub fn process_join_pool(
 #### Program Architecture Benefits
 
 - Composability: Works with SPL tokens and other Solana programs
-- Scalability: Efficient data structures minimize transaction costs
+- Scalability: Efficient data structures minimise transaction costs
 - Transparency: All calculations and results are on-chain and verifiable
 - Flexibility: Reward tiers can be adjusted for different pools
 - Security: Oracle data updates are verified and access-controlled
@@ -536,12 +536,12 @@ pub fn process_join_pool(
 
 - Implement multiple data sources for FPL scores to ensure accuracy
 - Use a time-weighted average to smooth any inconsistencies
-- Create contingency mechanisms for oracle failures
+- Create contingency mechanisms for Oracle failures
 
 
 #### Gas Optimisation
 
-- Batch score updates to minimize transaction costs
+- Batch score updates to minimise transaction costs
 - Use off-chain computation where possible, with on-chain verification
 
 
