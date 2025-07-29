@@ -95,7 +95,7 @@ Here's how you could structure it:
 - Pull official FPL scoring data through their API
 - Track each player's performance metrics in real-time during matches
 - Map imported FPL teams to their corresponding real-world performance
-- 
+
 
 #### Scoring Algorithm
 
@@ -219,9 +219,6 @@ Top 5% (50 users): 25% of pool (5 USDC each)
 Top 10% (100 users): 20% of pool (2 USDC each)
 Top 25% (250 users): 20% of pool (0.8 USDC each)
 Platform fee: 10% of the pool
-
-
-
 
 ## Participation:
 
