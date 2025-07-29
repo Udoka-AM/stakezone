@@ -208,8 +208,7 @@ Bonus points for consistency across gameweeks
 Let's walk through a specific example of how a standard pool would operate:
 
 #### Pool Creation:
-The 
-Gameweek 12 pool is created on Monday
+The Gameweek 12 pool is created on Monday
 - Entry fee: 10 USDC
 - Maximum participants: 1,000
 - Reward structure:
